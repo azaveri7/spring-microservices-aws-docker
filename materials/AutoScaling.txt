@@ -1,0 +1,6 @@
+1. Create Launch config for AS
+   - Instance creation
+   - AMI
+   
+2. AS group
+   - scaling policy 

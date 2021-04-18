@@ -1,0 +1,35 @@
+cat /etc/rc.local
+
+--whatever written in this file, the commands will get executed 
+  everytime the machine reboots.
+  
+so i will write the command in there
+
+java -jar /home/ec2-user/couponservice-0.0.1-SNAPSHOT.jar
+
+{assuming jar is copied into /home/ec2-user from s3}
+
+then we need to do
+
+chmod +x /etc/rc.d/rc.local
+
+Nowadays when you bring a new ec2 server up
+run,
+
+amazon-linux-extras install epel -y
+
+=========
+stress command
+=========
+yum install stress -Y
+
+stress is used to do load testing on ec2 instance
+
+==========
+Create AMI
+==========
+
+1. Select EC2 instance.
+2. Select Actions -> Create -> Create Image
+3. Give image name: couponservice
+4. while creating image, snapshot of the actual ec2 storage will be created.

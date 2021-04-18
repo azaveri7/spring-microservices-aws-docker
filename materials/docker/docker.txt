@@ -1,0 +1,137 @@
+-- to list all containers
+
+docker ps -a
+
+-- to remove multiple containers even if they are running
+
+docker rm -f <container id 1> <container id 2> <container id 3>
+
+-- to list all images
+
+docker images
+
+-- to remove multiple images
+
+docker rmi <image id 1> <image id 2> <image id 3>
+
+-- to restart a container
+
+docker restart <container id>
+
+-- to pause a container
+
+docker pause <container id>
+
+-- to un-pause a container
+
+docker unpause <container id>
+
+-- to list all layers of an image
+
+docker history <image name>
+
+-- Information about docker to know where docker images are stored,
+-- docker root dir: is the path name
+
+docker info
+
+Docker Root Dir: /var/lib/docker
+
+go to that path
+
+cd /var/lib/docker
+
+ls
+
+it will print
+
+overlay2 network trust volumes
+
+overlay2 -> contains info about all the layers
+
+volumnes -> data for a particular image is stored here
+
+-- to list all docker volumes
+
+docker volume ls
+
+-- to create volume
+
+docker volume create <name of volume>
+docker volume create myvol
+
+docker run -dit --mount source=myvol,destination=/tmp nginx
+
+/tmp inside container mapped to volume myvol
+
+inside container, the data is stored at /tmp
+
+/var/lib/docker/volumes
+
+/var/lib/docker/volumes/myvol/_data/
+will be created when u execute above command to create a new volume
+
+-- to bind volumes
+
+docker run -dit -v /root/mydata:/tmp ubuntu
+
+/root/mydata = is the random directory, no volume created in advance
+
+whatever is stored in /tmp will be there in /root/mydata
+
+-- bind mounts are not managed by docker
+-- they are outside of docker space
+-- can be accessed by any process running on docker host
+
+-- to list docker network
+
+docker network ls
+
+-- to list all details of a network
+
+docker network inspect <network-name>
+
+-- to create a nw
+
+docker network create demonw --subnet=172.9.0.0/16
+
+-- to launch a continer on any specific network
+
+docker run --name webserver2 --net demonw --ip 172.19.0.2 -h web.anand.com -p 82:80 -ti ubuntu /bin/bash
+
+ubuntu is the image name
+
+-- to change a container's nw
+
+docker network disconnect demonww webserver2
+
+-- to check 
+
+docker network inspect demonw
+
+no host will be there in this nw
+
+"Containers":{}
+
+docker inspect webserver2
+
+no ip address will be present for this container
+
+"NetworkSettings": {
+	...
+	...
+	"IPAddress": ""
+	"IPPrefixLen": 0,
+	"IPv6Gateway": "",
+	"MacAddress":"",
+	"Networks":{}
+}
+
+-- to connect container to a network
+docker network connect bridge webserver2
+
+bridge is the name of a network which comes default with docker
+
+docker inspect webserver2
+
+"NetworkSettings": check this section, it should have IP details

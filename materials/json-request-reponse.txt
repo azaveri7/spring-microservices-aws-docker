@@ -1,0 +1,104 @@
+Add coupon details request:
+
+URL: http://localhost:9091/couponapi/coupons
+
+Operation: POST
+	
+Body:
+
+	RAW JSON
+	
+Request:
+
+{
+    "code":"DIWALISALE",
+    "discount":20,
+    "expDate":"12/12/2021"
+}
+		
+Response:
+
+{
+    "code": "DIWALISALE",
+    "discount": 20,
+    "expDate": "12/12/2021"
+}
+
+******************************
+
+Get coupon details request:
+
+URL: http://localhost:9091/couponapi/coupons/DIWALISALE
+
+Operation: GET
+	
+	
+Request:
+		
+Response:
+
+{
+    "code": "DIWALISALE",
+    "discount": 20.000,
+    "expDate": "12/12/2021"
+}
+
+******************************
+
+Add product details request:
+
+URL: http://localhost:9091/productapi/products
+
+Operation: POST
+	
+Body:
+
+	RAW JSON
+	
+Request:
+
+{
+    "name":"Prestige cooker",
+    "description":"Pressure cooker laminated",
+    "price": 3000,    
+    "couponCode":"DIWALISALE"
+}
+		
+Response:
+
+{
+    "name": "Prestige cooker",
+    "description": "Pressure cooker laminated",
+    "price": 2980.000,
+    "couponCode": "DIWALISALE"
+}
+
+******************************
+
+Get product details request:
+
+URL: http://localhost:9091/productapi/products
+
+Operation: GET
+	
+Body:
+
+	RAW JSON
+	
+Request:
+
+{
+    "name":"Prestige cooker",
+    "description":"Pressure cooker laminated",
+    "price": 3000,    
+    "couponCode":"DIWALISALE"
+}
+		
+Response:
+
+{
+    "name": "Prestige cooker",
+    "description": "Pressure cooker laminated",
+    "price": 2980.000,
+    "couponCode": "DIWALISALE"
+}

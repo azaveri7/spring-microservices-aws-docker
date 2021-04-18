@@ -1,0 +1,6 @@
+1. Create a class LB
+2. default port 80 should be present in default SG for the LB
+2. give the port as 9091 in SG [which is used by couponservice]
+3. in the health check, give the GET url. You can also create a health
+   check operation in couponservice and mention here.
+4. To test, copy the DNS url [A record] and paste it in browser.

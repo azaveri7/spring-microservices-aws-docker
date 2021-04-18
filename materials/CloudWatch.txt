@@ -1,0 +1,23 @@
+1. Create a SNS topic and add subscription to send emails to your emaild id
+2. Start your EC2 instance of couponservice.
+3. In EC2 instance's Monitoring tab, click on Create Alarm.
+4. Select the SNS topic for this alarm.
+5. Now connect to ur ECS using putty.
+6. Run the commands
+
+	yum install stress -Y                
+	   - to install Stress if not already there.
+	   
+	top
+	   - command to show cpu usage.
+	   
+	stress --cpu 1
+	   - single cpu will be used 100%
+   
+7. Check the graphs like CPU utilization and Disk read operations
+
+8. YOu need to wait for 5 mins as for free cloudwatch service, it 
+   will collect the statistics after 5 mins.
+   
+9. After about 5 mins, u should receive an email in your email account.
+
