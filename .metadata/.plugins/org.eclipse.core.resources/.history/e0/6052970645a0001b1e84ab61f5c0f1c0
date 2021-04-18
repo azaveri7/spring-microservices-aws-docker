@@ -1,0 +1,4 @@
+FROM adoptopenjdk/openjdk11:ubi
+RUN mkdir /opt/app
+ADD target/couponservice-0.0.1-SNAPSHOT.jar /opt/app/couponservice.jar
+CMD ["java", "-jar", "/opt/app/couponservice.jar"]
