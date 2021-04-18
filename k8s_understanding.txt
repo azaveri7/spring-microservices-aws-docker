@@ -1,0 +1,18 @@
+Run powershell as administrator
+
+minikube start --vm-driver=hyperv --cpus 4 --memory 4096
+
+kubectl get namespaces
+
+ouput:
+
+default -> all objs like pods, rs, etc will be stored here
+           if no namespace is specified
+		   
+kube-node-lease -> all health related info stored here
+
+kube-public -> is very unsecured, do not use in prod
+
+kube-system -> system level k8s namespace
+
+kubernetes-dashboard -> ui app to access k8s cluster resources
