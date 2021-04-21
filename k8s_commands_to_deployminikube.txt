@@ -1,0 +1,27 @@
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+
+minikube start --vm-driver=hyperv --cpus 4 --memory 4096
+
+kubectl create -f docker-mysql-configmap.yml 
+kubectl create -f docker-mysql-deployment.yml
+kubectl create -f docker-mysql-service.yml
+
+kubectl get pods
+kubectl get configmaps
+kubectl get deployments
+
+minikube ip
+172.18.28.211
+
+Open mysql workbench and use above ip to connect to db. for port, 
+find the port from 
+
+kubectl get svc or yml file with NodePort value
+
+kubectl create -f coupon-service-deployment.yml 
+kubectl create -f coupon-service-svc.yml
+kubectl create -f product-service-deployment.yml 
+kubectl create -f product-service-svc.yml
+
+
+

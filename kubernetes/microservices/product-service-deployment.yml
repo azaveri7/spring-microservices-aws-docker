@@ -17,4 +17,4 @@ spec:
         spec:
             containers:
                 - name: product-app
-                  image: bharatht19/productservice
+                  image: azaveri7/productservice

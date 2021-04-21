@@ -16,3 +16,58 @@ kube-public -> is very unsecured, do not use in prod
 kube-system -> system level k8s namespace
 
 kubernetes-dashboard -> ui app to access k8s cluster resources
+
+======
+volumes
+======
+ types of volumes in k8s
+ 
+	emptyDir: any empty space in a pod. so all containers running on a pod
+	          will have access to this volume
+	nfs:      volume over a network, file-system. it is not on a pod.
+	          data which should be available on pod startup or the data
+			  needed beyond pod life-cycle, is to be stored in nfs.
+	hostPath: similar to docker volume. data is moved to node on which
+	          pod is running. should not be used in PROD.
+			  
+			  e.g.
+			  
+			  spec:
+				containers:
+					- name: myhttpd
+					  volumeMounts: 
+					  - name: demovol
+					    mountPath: /data  (this is the path on container. this volume is mounted on a container)
+						
+				volumes:
+					- name: demovol
+					  hostPath: 
+						path: /data
+						type: Directory (this is the path on pod)
+						
+						
+			Note: container is running inside a k8s pod.
+	configMap and secrets: are special type of volumes which are used
+	                       for specific purpose. volume is on k8s cluster.
+						   
+						   Hence we also mention configMap inside volumes tag in k8s
+						   
+						   secrets are storedin tmpf location and only till the time
+						   when pod makes a request for secret.
+						   
+						   different types of secrets like opaque etc. refer k8s docum.
+	
+Refer AWS documentation for k8s volumes. there are tons of volumes available
+for AWS and k8s.
+
+
+if a pod wants to use volume at cluster level, it has to do PVC, persistent volume claim
+
+so there are 3 steps:
+
+1. create PV
+2. create PVC
+3. mount volume claim
+
+3 access modes are available.
+Refer pdf

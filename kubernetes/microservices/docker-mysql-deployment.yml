@@ -25,7 +25,7 @@ spec:
                     - name: MYSQL_DATABASE
                       value: mydb
                     - name: MYSQL_ROOT_PASSWORD
-                      value: test1234
+                      value: anand123
                     - name: MYSQL_ROOT_HOST
                       value: '%'
                   volumeMounts:

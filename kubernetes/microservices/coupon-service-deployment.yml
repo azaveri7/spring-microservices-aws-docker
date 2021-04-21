@@ -17,4 +17,4 @@ spec:
         spec:
             containers:
                 - name: coupon-app
-                  image: bharatht19/couponservice
+                  image: azaveri7/couponservice
